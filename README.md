@@ -9,7 +9,7 @@ These docs are purposefully controlled via Git to allow us to collaborate and ex
 Simply checkout the code:
 
 ```bash
-git clone https://github.com/Ebradell/docs.git
+git clone https://github.com/Ebradell/ebradell.github.io.git
 ```
 
 Then create a branch named after your change:

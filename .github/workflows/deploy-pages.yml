@@ -30,7 +30,7 @@ jobs:
       - name: Create artifact
         run: |
           mkdir public \
-          mv ./index.html ./public/index.html
+          tar -zcvf ./public/artifact.tar.gz index.html \
           ls -lah ./public
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1

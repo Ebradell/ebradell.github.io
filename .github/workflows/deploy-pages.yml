@@ -24,9 +24,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Build
-        id: build
-        run: ls
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3
+      - name: Create artifact
+        run: |
+          mkdir public \
+          mv index.html public/index.html
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./public
 
   deploy:
     environment:

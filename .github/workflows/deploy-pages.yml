@@ -1,0 +1,40 @@
+name: Deploy pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # can manually run
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+  # only do one deploy at a time
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        id: build
+        run: ls
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2

@@ -29,7 +29,7 @@ jobs:
         uses: actions/configure-pages@v3
       - name: Create artifact
         run: |
-          mkdir public && tar -zcvf ./public/file.tar.gz ./index.html
+          mkdir public && tar -zcvf public/artifact.tar.gz index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
